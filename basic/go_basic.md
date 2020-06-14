@@ -2,9 +2,7 @@
 
 ## 1.Golang基础
 
-### 1.1 Golang入门
-
-#### 1.1.1 Golang语言有哪些特点？
+### 1.1 Golang语言有哪些特点？
 
 1.  并发实现和控制简单。语言级别支持协程(goroutine)并发协程又称微线程，比线程更轻量、开销更小，性能更高（实际上协程就是一个线程同步执行多个任务），关键字（go）用于启动协程。**高并发是Golang语言最大的亮点 。**
 
@@ -30,5 +28,64 @@
 
  ### 1.2 Golang语法
 
+#### 1.2.1 声明
 
+* 关键字:只能用在语法允许的地方，不能作为变量名。
+
+<table>
+    <tr>
+      <td>break</td>
+      <td>default</td>
+      <td>func</td>
+      <td>interface</td>
+      <td>select</td>
+   </tr>
+   <tr>
+      <td>case </td>
+      <td>defer</td>
+      <td>go</td>
+      <td>map</td>
+      <td>struct</td>
+   </tr>
+   <tr>
+      <td>chan</td>
+      <td>else</td>
+      <td>goto</td>
+      <td>package</td>
+      <td>switch</td>
+   </tr>
+   <tr>
+      <td>const</td>
+      <td>fallthrough</td>
+      <td>if</td>
+      <td>range</td>
+      <td>type</td>
+   </tr>
+   <tr>
+      <td>continue</td>
+      <td>for</td>
+      <td>import</td>
+      <td>return</td>
+      <td>var</td>
+   </tr>
+</table>
+
+* 常量：true/false/nil/iota
+
+* 类型：
+
+  |         整数类型          |             浮点型              |             其他数字类型              |
+  | :-----------------------: | :-----------------------------: | :-----------------------------------: |
+  |  uint8<br/>无符号8位整型  | float32<br/>IEEE-754 32位浮点型 |          byte<br />类似uint8          |
+  | uint16<br/>无符号8位整型  | float64<br/>IEEE-754 64位浮点型 |          rune<br />类似int32          |
+  | uint32<br/>无符号32位整型 |  complex64<br/>32位实数和虚数   |          uint<br />32或64位           |
+  | uint64<br/>无符号64位整型 |  complex128<br/>64位实数和虚数  |        int<br />与uint一样大小        |
+  |  int8<br/>有符号8位整型   |                                 | uintptr<br />无符号整型，用于存放指针 |
+  | int16<br/>有符号16位整型  |                                 |                                       |
+  | int32<br/>有符号32位整型  |                                 |                                       |
+  | int64<br/>有符号64位整型  |                                 |                                       |
+
+  
+
+  
 
