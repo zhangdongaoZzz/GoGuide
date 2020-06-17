@@ -89,3 +89,30 @@
 
 #### 1.2.2 声明
 
+~~~go
+//普通变量声明
+//var + 变量名 + 变量类型
+var x int 
+var i,j,k int
+var b,f,s = true,2.3,"four"
+//或者使用短变量声明:= 直接声明同时初始化
+x := 1
+b,f,s := true,2.3,"four"
+//常量声明：
+const pai = 3.1415
+~~~
+
+短变量 **:=** 声明的左侧必须有一个新变量：
+
+~~~go
+//通过
+in,err := os.Open(fd)
+out,err := io.Create(fd) //新变量out
+
+//无新变量，不通过,编译错误
+f, err := os.Open(fd)
+f, err := io.Create(fd)
+~~~
+
+
+
