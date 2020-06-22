@@ -89,6 +89,8 @@
 
 #### 1.2.2 声明
 
+变量声明：
+
 ~~~go
 //普通变量声明
 //var + 变量名 + 变量类型
@@ -114,5 +116,60 @@ f, err := os.Open(fd)
 f, err := io.Create(fd)
 ~~~
 
+指针声明：
 
+~~~go
+//变量x
+x := 1
+//p代表x存放的地址，也就是指针,&为取址符号
+p := &x
+fmt.Println(*p) // "1"
+//赋值
+*p = 2
+fmt.Println(*p) // "2"
+~~~
+
+new函数：
+
+~~~go
+//另一种创建变量的方式是使用内置的new函数
+p := new(int)  //*int 类行的p,指向未命名的int变量
+fmt.Println(*p) //输出 “0” 
+*p = 2 			//赋值
+fmt.Println(*p)  //输出 “2”
+~~~
+
+
+
+#### 1.2.3 变量的声明周期
+
+​	生命周期指的是程序执行过程中，变量存在的时间段。包级别的变量生命周期是整个程序的执行时间。局部变量有一个动态的生命周期：从创建到没有不可访问（没有其他变量引用它），这个时候回收占用的空间。
+
+​	包级变量，以及每个当前执行函数的局部变量都能作为GC Root。编译器可以选择在堆或者栈上分配空间，例如：
+
+![image-20200622231147565](C:\Users\zhang\AppData\Roaming\Typora\typora-user-images\image-20200622231147565.png)
+
+​	这里我们可以理解为，真局部变量（函数结束就回收空间的变量），在栈上分配空间，全局变量在堆上分配，详细的分配回收我们会在后续章节详述。
+
+#### 1.2.4  易错点
+
+~~~go
+var cwd string
+func init(){
+    //此处使用短声明，会使全局变量cwd失效
+    cwd,err := os.Get(xxx) 
+    if err != nil {
+        log.Fata("err",err)
+    } 
+}
+
+
+//正确方法应该是：
+var cwd string
+func init(){
+    var err error
+    cwd, err = os.Get(xxx) //使用正常声明
+    if err !=nil .....//省略
+}
+~~~
 
