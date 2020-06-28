@@ -177,3 +177,70 @@ func init(){
 
 ### 1.3 基本数据
 
+​	Go的数据类行分四大类：基础类型（数字，字符串，布尔），聚合类型（数组），引用类型（指针），接口类型。
+
+#### 1.3.1 基础类型
+
+​	整型，浮点数，复数，布尔值，字符串，常量。
+
+~~~go
+//不同位数的int不能相互操作，例如相加
+var apple int32 = 1
+var oranges int16 = 2
+var compote int = apple + oranges //编译错误
+
+//强转型修正：
+var compote int = int(apple) + int(oranges)
+
+//字符串
+s := "hello"
+fmt.Println(len(s))// "5"
+fmt.Println(s[0],s[2])//"h","l"
+fmt.Println(s[len(s)]) //越界
+
+//常量
+const pi = 3.1415926
+//声明多个常量
+const (
+    e = 2.7
+    pi = 3.1415926
+)
+//常量生成器iota
+const (
+	Sunday  = iota
+	Monday
+    Tuesday
+    ...
+)
+/*上面的声明中，Sunday的值为0，Monday为1，以此类推*/
+
+~~~
+
+
+
+#### 1.3.2 字符串和数字的转换
+
+~~~go
+//整数转字符串,一种是Sprintf，一种是strconv
+x := 123
+y := fmt.Sprintf("%d",x) 
+//最常用的是 Atoi (string to int) and Itoa (int to string).
+i, err := strconv.Atoi("-42")
+s := strconv.Itoa(-42)
+//FormatInt 和FormatUint 可以按进制转化
+fmt.Print(strconv.FormatInt(int64(x),2))//"1111011"
+//或者
+s := fmt.Sprint("x=%b",x) //"x=1111011"
+//Parse系列，将string转化成对应格式
+b, err := strconv.ParseBool("true")
+f, err := strconv.ParseFloat("3.1415", 64) //string to float,第二个参数代表float64
+i, err := strconv.ParseInt("-42", 10, 64)//string to 10进制int64
+u, err := strconv.ParseUint("42", 10, 64)
+~~~
+
+
+
+​	
+
+​	
+
