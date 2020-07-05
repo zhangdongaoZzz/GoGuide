@@ -296,5 +296,33 @@ app := []int{5,6}
 
 #### 1.4.3 map
 
+~~~go
+//创建
+ages := make(map[string]int) //map[key]value
+//创建+初始化
+ages := map[string]int{
+    "alice": 31,
+    "charlie":34,
+}
+//同上
+ages := make(map[string]int)
+ages["alice"] = 31
+ages["charlie"] = 34
+
+//删除
+delete(ages,"alice") //可删除不存在的元素
+
+//遍历
+for key,value := range ages{
+    fmt.Println(key,value)
+}
+~~~
+
+​	遍历字典的顺序是不确定的（在早年Golang版本是固定顺序），所以你要得到固定顺序的字典结果，那你只能把元素都取出来放在slice存储了。
+
+​	Go没有提供集合类型，所以只能利用map key是唯一的性质来实现集合。
+
+#### 1.4.5 结构体
+
 
 
